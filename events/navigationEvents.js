@@ -1,7 +1,7 @@
 import { signOut } from '../utils/auth';
 import { booksOnSale, getBooks } from '../api/bookData';
 import { showBooks } from '../pages/books';
-import { getAuthors } from '../api/authorData'; // getAuthorBooks, <-- import this eventually here.
+import { getAuthors, authorsFav } from '../api/authorData';
 import { showAuthors } from '../pages/authors';
 // navigation events
 const navigationEvents = () => {
@@ -17,6 +17,11 @@ const navigationEvents = () => {
   // ALL BOOKS
   document.querySelector('#all-books').addEventListener('click', () => {
     getBooks().then(showBooks);
+  });
+
+  // FAVORITE AUTHORS
+  document.querySelector('#favAuthors').addEventListener('click', () => {
+    authorsFav().then(showAuthors);
   });
 
   // FIXME: STUDENTS Create an event listener for the Authors
