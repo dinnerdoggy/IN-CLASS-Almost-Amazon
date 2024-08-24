@@ -3,7 +3,6 @@ import client from '../utils/client';
 
 const endpoint = client.databaseURL;
 
-// GET BOOKS
 const getBooks = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/books.json`, {
     method: 'GET',
@@ -38,7 +37,11 @@ const createBook = () => {};
 // TODO: UPDATE BOOK
 const updateBook = () => {};
 
-// TODO: FILTER BOOKS ON SALE
+// const updateBook = (payload) => new Promise((resolve, reject) => {
+//
+// });
+
+// FILTER BOOKS ON SALE
 const booksOnSale = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/books.json?orderBy="sale"&equalTo=true`, {
     method: 'GET',
