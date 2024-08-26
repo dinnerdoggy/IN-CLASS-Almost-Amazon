@@ -1,9 +1,11 @@
+import { createBook } from '../api/bookData';
+
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
     // TODO: CLICK EVENT FOR SUBMITTING FORM FOR ADDING A BOOK
     if (e.target.id.includes('submit-book')) {
-      console.warn('CLICKED SUBMIT BOOK', e.target.id);
+      createBook();
     }
 
     // TODO: CLICK EVENT FOR EDITING A BOOK
