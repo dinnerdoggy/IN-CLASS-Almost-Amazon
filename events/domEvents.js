@@ -1,5 +1,6 @@
 import { getAuthors, deleteSingleAuthor } from '../api/authorData';
 import { getBooks, getSingleBook, deleteBook } from '../api/bookData';
+import addAuthorForm from '../components/forms/addAuthorForm';
 import addBookForm from '../components/forms/addBookForm';
 import { showAuthors } from '../pages/authors';
 import { showBooks } from '../pages/books';
@@ -37,7 +38,7 @@ const domEvents = () => {
       console.warn(e.target.id.split('--'));
     }
 
-    // FIXME: ADD CLICK EVENT FOR DELETING AN AUTHOR
+    // ADD CLICK EVENT FOR DELETING AN AUTHOR
     if (e.target.id.includes('delete-author-btn')) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to delete?')) {
@@ -50,9 +51,9 @@ const domEvents = () => {
       }
     }
 
-    // FIXME: ADD CLICK EVENT FOR SHOWING FORM FOR ADDING AN AUTHOR
+    // ADD CLICK EVENT FOR SHOWING FORM FOR ADDING AN AUTHOR
     if (e.target.id.includes('add-author-btn')) {
-      console.warn('ADD AUTHOR');
+      addAuthorForm();
     }
     // FIXME: ADD CLICK EVENT FOR EDITING AN AUTHOR
   });
