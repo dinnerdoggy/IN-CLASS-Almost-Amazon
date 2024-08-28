@@ -53,12 +53,26 @@ const formEvents = () => {
         last_name: document.querySelector('#last_name').value,
       };
     
-      createAuthor(payload).then(({ key }) => {
-        const patchPayload = { firebaseKey: key };
+      createAuthor(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
     
         updateAuthor(patchPayload).then(() => {
           getAuthors().then(showAuthors);
         });
+      });
+    }
+    // edit an author
+    if (e.target.id.includes('update-author')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        email: document.querySelector('#email').value,
+        first_name: document.querySelector('#first_name').value,
+        last_name: document.querySelector('#last_name').value,
+        firebaseKey,
+      };
+    
+      updateBook(payload).then(() => {
+        getAuthors().then(showAuthors);
       });
     }
   });
