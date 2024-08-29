@@ -3,16 +3,6 @@ import { getSingleAuthor, getAuthorBooks, deleteSingleAuthor } from './authorDat
 
 // for merged promises
 
-const deleteAuthorBooksRelationship = (firebaseKey) => new Promise((resolve, reject) => {
-  getAuthorBooks(firebaseKey).then((authorBooksArray) => {
-    const deleteBookPromises = authorBooksArray.map((book) => deleteBook(book.firebaseKey));
-
-    Promise.all(deleteBookPromises).then(() => {
-      deleteSingleAuthor(firebaseKey).then(resolve);
-    });
-  }).catch(reject);
-});
-
 // TODO: Get data for viewBook
 const getBookDetails = (firebaseKey) => new Promise((resolve, reject) => {
   // GET SINGLE BOOK
@@ -22,6 +12,16 @@ const getBookDetails = (firebaseKey) => new Promise((resolve, reject) => {
   }).catch(reject);
   // GET AUTHOR
   // Create an object that has book data and an object named authorObject
+});
+
+const deleteAuthorBooksRelationship = (firebaseKey) => new Promise((resolve, reject) => {
+  getAuthorBooks(firebaseKey).then((authorBooksArray) => {
+    const deleteBookPromises = authorBooksArray.map((book) => deleteBook(book.firebaseKey));
+
+    Promise.all(deleteBookPromises).then(() => {
+      deleteSingleAuthor(firebaseKey).then(resolve);
+    });
+  }).catch(reject);
 });
 
 export { getBookDetails, deleteAuthorBooksRelationship };
