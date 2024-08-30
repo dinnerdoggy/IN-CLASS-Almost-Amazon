@@ -1,5 +1,7 @@
 import { getSingleBook, deleteBook } from './bookData';
 import { getSingleAuthor, getAuthorBooks, deleteSingleAuthor } from './authorData';
+import { showAuthorBooks } from '../pages/viewAuthor';
+// import viewAuthor from '../pages/viewAuthor';
 // import { showBooks } from '../pages/books';
 // import viewBook from '../pages/viewBook';
 
@@ -28,11 +30,8 @@ const deleteAuthorBooksRelationship = (firebaseKey) => new Promise((resolve, rej
 
 const getAuthorDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getAuthorBooks(firebaseKey).then((authorBooksArray) => {
-    const viewBookPromises = authorBooksArray.map((book) => console.warn(book.title));
-
-    Promise.all(viewBookPromises).then(() => {
-      getSingleAuthor(firebaseKey).then(resolve);
-    });
+    console.warn(authorBooksArray);
+    showAuthorBooks(authorBooksArray);
   }).catch(reject);
 });
 
