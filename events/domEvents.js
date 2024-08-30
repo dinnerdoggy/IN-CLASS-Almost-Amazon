@@ -67,7 +67,9 @@ const domEvents = () => {
       console.warn('Clicked Author');
       const [, firebaseKey] = e.target.id.split('--');
 
-      getAuthorDetails(firebaseKey);
+      getAuthorDetails(firebaseKey).then((data) => {
+        console.warn(data);
+      });
       getSingleAuthor(firebaseKey);
     }
   });
