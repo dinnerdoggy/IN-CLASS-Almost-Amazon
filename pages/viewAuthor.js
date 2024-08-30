@@ -1,8 +1,7 @@
 import renderToDOM from '../utils/renderToDom';
-import clearDom from '../utils/clearDom';
+// import clearDom from '../utils/clearDom';
 
 const viewAuthor = (item) => {
-  clearDom();
   const domString = `
   <div class="card" style="width: 18rem;">
     <div class="card-body">

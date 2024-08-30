@@ -6,7 +6,7 @@ import addBookForm from '../components/forms/addBookForm';
 import { showAuthors } from '../pages/authors';
 import { showBooks } from '../pages/books';
 import viewBook from '../pages/viewBook';
-import { viewAuthor } from '../pages/viewAuthor';
+// import { viewAuthor } from '../pages/viewAuthor';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -69,10 +69,7 @@ const domEvents = () => {
       console.warn('Clicked Author');
       const [, firebaseKey] = e.target.id.split('--');
 
-      getAuthorDetails(firebaseKey).then((data) => {
-        viewAuthor(data);
-        // showAuthorBooks(data);
-      });
+      getAuthorDetails(firebaseKey);
     }
   });
 };
