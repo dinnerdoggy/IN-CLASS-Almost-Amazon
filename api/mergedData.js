@@ -1,6 +1,7 @@
 import { getSingleBook, deleteBook } from './bookData';
 import { getSingleAuthor, getAuthorBooks, deleteSingleAuthor } from './authorData';
-import viewBook from '../pages/viewBook';
+// import { showBooks } from '../pages/books';
+// import viewBook from '../pages/viewBook';
 
 // for merged promises
 
@@ -27,7 +28,7 @@ const deleteAuthorBooksRelationship = (firebaseKey) => new Promise((resolve, rej
 
 const getAuthorDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getAuthorBooks(firebaseKey).then((authorBooksArray) => {
-    const viewBookPromises = authorBooksArray.map((book) => viewBook(book));
+    const viewBookPromises = authorBooksArray.map((book) => console.warn(book.title));
 
     Promise.all(viewBookPromises).then(() => {
       getSingleAuthor(firebaseKey).then(resolve);
